@@ -9,11 +9,11 @@ const BetSchema = new Schema({
     events: [{
         team1: {type:String, required: true},
         team2: {type:String, required: true},
-        result: {type:Number,required: true},
+        result: {type:String,required: true},
         odd: {type:Number, require: true},
         betEvent: {type:String, required: true}
     }],
-    result: {type:Number,required: true},
+    result: {type:String,required: true},
     sum: {type:Number,required: true}
 });
 

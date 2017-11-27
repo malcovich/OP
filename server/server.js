@@ -9,6 +9,7 @@ var config = require('./config');
 
 var user = require('./routes/user.js');
 var expense = require('./routes/expense.js');
+var bet = require('./routes/bet.js');
 
 var port = process.env.PORT || config.serverport;
 
@@ -73,6 +74,8 @@ apiRoutes.get('/expense/:id', expense.getexpense); // API returns expense detail
 apiRoutes.post('/expense/total/:id', expense.expensetotal); // API returns expense details of given expense id
 
 apiRoutes.post('/expense/report/:id', expense.expensereport); //API returns expense report based on user input
+
+apiRoutes.post('/bet/:id', bet.saveBet); // API adds & update expense of the user
 
 // kick off the server 
 app.listen(port);

@@ -6,6 +6,7 @@ import { DatePipe } from '@angular/common';
 
 import { AuthGuard } from '../user/auth-guard.service';
 import { AuthService } from '../user/auth.service';
+import { BetService } from './bet.service';
 import { BetsComponent } from './bets.component';
 import { AddBetComponent } from './add/add.component';
 
@@ -30,7 +31,8 @@ import { AddBetComponent } from './add/add.component';
   providers: [
     DatePipe,
     AuthService,
-    AuthGuard
+    AuthGuard,
+    BetService
   ]
 })
 export class BetsModule {}
