@@ -60,6 +60,17 @@ exports.saveBet = function(req, res, next){
     }
 }
 
+exports.getAllBets = function(req, res, next){
+	Bet.find({userId:req.body.userid}).exec(function(err, expense){
+        if(err){ res.status(400).json({ success: false, message:'Error processing request '+ err }); 
+        }
+        res.status(201).json({
+		success: true, 
+		data: expense
+	});
+    });
+}
+
 exports.delexpense = function(req, res, next) {
 	Expense.remove({_id: req.params.id}, function(err){
         if(err){ res.status(400).json({ success: false, message: 'Error processing request '+ err }); }

@@ -76,6 +76,7 @@ apiRoutes.post('/expense/total/:id', expense.expensetotal); // API returns expen
 apiRoutes.post('/expense/report/:id', expense.expensereport); //API returns expense report based on user input
 
 apiRoutes.post('/bet/:id', bet.saveBet); // API adds & update expense of the user
+apiRoutes.post('/bets', bet.getAllBets); // API adds & update expense of the user
 
 // kick off the server 
 app.listen(port);

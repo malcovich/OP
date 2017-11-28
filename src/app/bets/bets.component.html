@@ -3,4 +3,44 @@
         <h1> Bets</h1>
         <a class="btn"  [routerLink]="['../', 'addbet']" routerLinkActive="active">Add bet</a>
     </div>
+
+    <div class="wraper">
+        <table class="list-bets">
+            <thead>
+                <tr>
+                    <th class="index">№</th>
+                    <th class="date">Дата</th>
+                    <th class="match">Матч</th>
+                    <th class="bet-type">Тип</th>
+                    <th>Событие</th>
+                    <th>Результат</th>
+                    <th>Сумма</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let bet of listBets; let i = index">
+                <td>{{i+1}}</td>
+                <td>{{bet.betDate | date:shortDate}}</td>
+                <td>
+                    <div *ngIf="bet.betType == 'Експрес'">
+                        ук
+                    </div>
+                    <div *ngIf="bet.betType !== 'Експрес'">
+                            {{bet.events[0].team1}}-{{bet.events[0].team2}}
+                        </div>
+                </td>
+                <td>{{bet.betType}}</td>
+                <td>{{bet.betEvent}}</td>
+                <td>{{bet.result}}</td>
+                <td>{{bet.sum}}</td>
+                </tr>
+            </tbody>
+            <!-- <tfoot>
+                <tr>
+                <td>Footer content 1</td>
+                <td>Footer content 2</td>
+                </tr>
+            </tfoot> -->
+            </table>
+    </div>
 </div>

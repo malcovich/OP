@@ -30,13 +30,13 @@ export class BetService {
             .catch(this.handleError);
     }
 
-    getExpenses(userid, oExpense) {
+    getBets(oBet) {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
         headers.append('Authorization', `${this.jwtToken}`);
         let options = new RequestOptions({ headers: headers });
 
-        return this.http.post(`http://localhost:1978/api/expense/report/${userid}`, JSON.stringify(oExpense), options)
+        return this.http.post('http://localhost:1978/api/bets', JSON.stringify(oBet),options)
             .map((response: Response) => response.json())
             .catch(this.handleError);
     }
