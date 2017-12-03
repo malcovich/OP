@@ -1,8 +1,9 @@
 <div class="container pagecontainer">
     <div class="page-header">
-        <h1> Bets</h1>
-        <a class="btn"  [routerLink]="['../', 'addbet']" routerLinkActive="active">Add bet</a>
+        <a class="btn add_bet"  [routerLink]="['../', 'addbet']" routerLinkActive="active">Добавить</a>
+        <h1 class="title"> Bets</h1>
     </div>
+    <div (click)="openModal(template)">Jpen</div>
 
     <div class="wraper">
         <table class="list-bets">
@@ -15,32 +16,57 @@
                     <th>Событие</th>
                     <th>Результат</th>
                     <th>Сумма</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let bet of listBets; let i = index">
-                <td>{{i+1}}</td>
-                <td>{{bet.betDate | date:shortDate}}</td>
-                <td>
-                    <div *ngIf="bet.betType == 'Експрес'">
-                        ук
-                    </div>
-                    <div *ngIf="bet.betType !== 'Експрес'">
-                            {{bet.events[0].team1}}-{{bet.events[0].team2}}
-                        </div>
-                </td>
-                <td>{{bet.betType}}</td>
-                <td>{{bet.betEvent}}</td>
-                <td>{{bet.result}}</td>
-                <td>{{bet.sum}}</td>
-                </tr>
+                <ng-container *ngFor="let bet of listBets; let i = index" >
+                    <tr>
+                        <td>{{i+1}}</td>
+                        <td>{{bet.betDate | date:shortDate}}</td>
+                        <td>
+                            <div *ngIf="bet.betType == 'Експрес'" (click)="openBet(bet)">
+                                <span class="glyphicon glyphicon-menu-down expres-icon" [ngClass]="{'glyphicon-menu-up' :bet.isOpened,'glyphicon-menu-down': !bet.isOpened}"></span> Матчей: {{bet.events.length}}
+                            </div>
+                            <div *ngIf="bet.betType !== 'Експрес'">
+                                    {{bet.events[0].team1}}-{{bet.events[0].team2}}
+                                </div>
+                        </td>
+                        <td>{{bet.betType}}</td>
+                        <td> <div *ngIf="bet.betType !== 'Експрес'">{{bet.events[0].betEvent}}</div></td>
+                        <td><span class='{{getBetClass(bet)}}'>{{bet.result}}</span></td>
+                        <td>{{bet.sum}}</td>
+                        <td><span class="glyphicon glyphicon-comment"
+                            (click)="openModal(template, bet)"></span></td>
+                    </tr>
+
+                    <tr *ngFor="let event of bet.events">
+                        <td *ngIf="bet.isOpened"></td>
+                        <td *ngIf="bet.isOpened"></td>
+                        <td *ngIf="bet.isOpened">
+                          {{event.team1}}-{{event.team2}}
+                        </td>
+                        <td *ngIf="bet.isOpened"></td>
+                        <td *ngIf="bet.isOpened">{{event.betEvent}}</td>
+                        <td *ngIf="bet.isOpened"><span class='{{getBetClass(event)}}'>{{event.result}}</span></td>
+                        <td *ngIf="bet.isOpened"></td>
+                   </tr>
+                </ng-container>
             </tbody>
-            <!-- <tfoot>
-                <tr>
-                <td>Footer content 1</td>
-                <td>Footer content 2</td>
-                </tr>
-            </tfoot> -->
-            </table>
+        </table>
     </div>
 </div>
+
+
+<ng-template #template >
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">{{title}}</h4>
+        <button type="button" class="close pull-right" 
+                aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    <div class="modal-body">
+        This is a modal.
+    </div>
+</ng-template>

@@ -1,5 +1,8 @@
 .list-bets{
-    
+	background: #FFFFFF;
+	border: 1px solid #DFE2E5;
+	border-radius: 4px;
+	width:100%;
 }
 .index {
     width:30px;
@@ -12,4 +15,66 @@
 }
 .bet-type {
     width: 120px;
+}
+.list-bets th {
+	height: 40px;
+	/* No.: */
+	font-size: 14px;
+	color: #7F8FA4;
+	font-weight: normal;
+	padding-left: 30px;
+	padding-right: 30px;
+}
+.list-bets td {
+	height: 40px;
+	border-top: 1px solid #DFE2E5;
+    padding-left: 30px;
+	font-size: 14px;
+	color: #7F8FA4;
+}
+.win_bet{
+	background: #45B854;
+	border-radius: 3px;
+	font-size: 10px;
+	color: #FFFFFF;
+	width: 77px;
+	height: 19px;
+	display: inline-block;
+	text-align: center;
+	line-height: 19px;
+	text-transform: uppercase;
+}
+.lost_bet{
+	background: #D55742;
+	border-radius: 3px;
+	font-size: 10px;
+	color: #FFFFFF;
+	width: 77px;
+	height: 19px;
+	display: inline-block;
+	text-align: center;
+	line-height: 19px;
+	text-transform: uppercase;
+}
+.btn {
+	background-image: linear-gradient(-180deg, #39B54A 0%, #34AA44 98%);
+	border: 1px solid #249533;
+	border-radius: 4px;
+	color:#fff;
+	max-width: 300px;
+}
+.add_bet {
+	float: right;
+}
+.title{
+	font-family: .AppleSystemUIFont;
+	font-size: 18px;
+	color: #354052;
+	float:left;
+	line-height: 34px;
+	margin: 0;
+}
+.expres-icon {
+	float: right;
+	color: #45B854;
 }

@@ -14,6 +14,11 @@ import { UserModule } from './user/user.module';
 import { ExpenseModule } from './expense/expense.module';
 import { BetsModule } from './bets/bets.module';
 
+/* Bootstrap */
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ModalModule } from 'ngx-bootstrap/modal';
+
 /* common Modules */
 import { ToastrService } from './common/toastr.service';
 
@@ -25,6 +30,10 @@ import { ToastrService } from './common/toastr.service';
     HttpModule,
     UserModule,
     ExpenseModule,
+    BrowserModule,
+    BsDropdownModule.forRoot(),
+    TooltipModule.forRoot(),
+    ModalModule.forRoot(),
     BetsModule,
     RouterModule.forRoot([
         { path: 'login', component: LoginComponent},
